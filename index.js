@@ -16,12 +16,12 @@ function addManager() {
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is the id of your maanger',
+                message: 'What is the id of your manager',
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is the email of your maanger',
+                message: 'What is the email of your manager',
             },
             {
                 type: 'input',
@@ -32,6 +32,7 @@ function addManager() {
        .then((answers) => {
         const manager = new Manager(answers.id, answers.name, answers.email, answers.number)
         employees.push(manager)
+       
         //trigger function that asks my user if they want to add another employee or are they ready to build the team?
        })
 }
