@@ -129,4 +129,57 @@ function promptNext() {
 }
 
 
+function generateHTML(employees) {
+    
+    if (employees instanceof Intern) {
+
+    }
+    return `
+    <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <title>Document</title>
+  </head>
+  <body>
+    ${employees.map(generateCard)}
+
+  </body>
+  </html>`
+};
+
+function generateCard(employees) {
+    const { name, id, email } = employees
+    let specificContent = ''
+    if (employees instanceof Intern) {
+        specificContent = `
+        <h6 class="card-subtitle mb-2 text-muted">${employees.school}</h6>
+        `
+    }
+    return `
+    <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h1 class="card-title">'Intern'${name}</h1>
+      <h6 class="card-subtitle mb-2 text-muted">${id}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">${email}</h6>
+      ${specificContent}
+    </div>
+  </div>
+  `
+};
+
+function generateInternCard(){
+    return 'intern'
+}
+
+function generateEngineerCard(){
+    return 'engineer'
+}
+
+function generateManagerCard(){
+    return 'manager'
+}
+
 createManager()
