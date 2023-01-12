@@ -14,6 +14,8 @@ This application allows a user to create a team of employees with given titles: 
 
 [Team-Profile-Generator](https://github.com/annaperlack/team-profile-generator)
 
+![screenshot](assets/team-screenshot.png)
+
 ## Credits
 
 N/A

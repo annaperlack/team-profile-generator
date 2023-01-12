@@ -151,36 +151,44 @@ function generateHTML(employees) {
     <title>Document</title>
   </head>
   <body>
+  <header>
+  <h1>Team Profile</h1>
+  </header>
     ${cardsHTML}   
   </body>
   </html>`
 };
 
 function generateManagerCard(manager) {
-    return `<div class="card" style="width: 18rem;">
-    <div class="card-body">
+    return `<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">
     <h3 class="card-title">Manager ${manager.name}</h3>
+    </div>
+    <div class="card-body">
     <h6 class="card-subtitle mb-2 text-muted">${manager.id}</h6>
-    <h6 class="card-subtitle mb-2 text-muted">${manager.email}</h6>
+    <h6 class="card-subtitle mb-2 text-muted"><a href=mailto:${manager.email}>Email</a></h6>
+    <h6 class="card-subtitle mb-2 text-muted">${manager.officeNumber}</h6>
     </div>
     </div>`
 }
 function generateEngineerCard(engineer) {
-    return `<div class="card" style="width: 18rem;">
-    <div class="card-body">
-    <h3 class="card-title">Engineer ${engineer.id.name}</h3>
+    return `<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">
+   <h3 class="card-title">Engineer ${engineer.id.name}</h3>
+    </div>
     <h6 class="card-subtitle mb-2 text-muted">${engineer.id.id}</h6>
-    <h6 class="card-subtitle mb-2 text-muted">${engineer.id.email}</h6>
-    <h6 class="card-subtitle mb-2 text-muted">${engineer.id.github}</h6>
+    <h6 class="card-subtitle mb-2 text-muted"><a href=mailto:${engineer.id.email}>Email</a></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><a href="https://www.github.com/${engineer.id.github}">GitHub</a></h6>
     </div>
     </div>`
 }
 function generateInternCard(intern) {
-    return `<div class="card" style="width: 18rem;">
-    <div class="card-body">
+    return `<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">
     <h3 class="card-title">Intern ${intern.id.name}</h3>
+    </div>
     <h6 class="card-subtitle mb-2 text-muted">${intern.id.id}</h6>
-    <h6 class="card-subtitle mb-2 text-muted">${intern.id.email}</h6>
+    <h6 class="card-subtitle mb-2 text-muted"><a href=mailto:${intern.id.email}>Email</a></h6>
     <h6 class="card-subtitle mb-2 text-muted">${intern.id.number}</h6>
     </div>
     </div>`
