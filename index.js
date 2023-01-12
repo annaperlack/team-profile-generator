@@ -58,7 +58,7 @@ function createEngineer() {
             },
             {
                 type: 'input',
-                name: 'number',
+                name: 'github',
                 message: 'What is the github username of the engineer?',
             },
 
@@ -123,16 +123,23 @@ function promptNext() {
             } else {
                 const htmlText = generateHTML(employees)
                 fs.writeFile('index.html', htmlText, (err) =>
-                    err ? console.log(err) : console.log('Successfully created team profile!')) 
+                    err ? console.log(err) : console.log('Successfully created team profile!'))
             }
         })
 }
 
 
 function generateHTML(employees) {
-    
-    if (employees instanceof Intern) {
-
+    let cardsHTML = ''
+    console.log(employees)
+    for (let i = 0; i < employees.length; i++) {
+        if (employees[i] instanceof Intern) {
+            cardsHTML += generateInternCard(employees[i])
+        } else if (employees[i] instanceof Engineer) {
+            cardsHTML += generateEngineerCard(employees[i])
+        } else if (employees[i] instanceof Manager) {
+            cardsHTML += generateManagerCard(employees[i])
+        }
     }
     return `
     <!DOCTYPE html>
@@ -144,42 +151,39 @@ function generateHTML(employees) {
     <title>Document</title>
   </head>
   <body>
-    ${employees.map(generateCard)}
-
+    ${cardsHTML}   
   </body>
   </html>`
 };
 
-function generateCard(employees) {
-    const { name, id, email } = employees
-    let specificContent = ''
-    if (employees instanceof Intern) {
-        specificContent = `
-        <h6 class="card-subtitle mb-2 text-muted">${employees.school}</h6>
-        `
-    }
-    return `
-    <div class="card" style="width: 18rem;">
+function generateManagerCard(manager) {
+    return `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h1 class="card-title">'Intern'${name}</h1>
-      <h6 class="card-subtitle mb-2 text-muted">${id}</h6>
-      <h6 class="card-subtitle mb-2 text-muted">${email}</h6>
-      ${specificContent}
+    <h3 class="card-title">Manager ${manager.name}</h3>
+    <h6 class="card-subtitle mb-2 text-muted">${manager.id}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${manager.email}</h6>
     </div>
-  </div>
-  `
-};
-
-function generateInternCard(){
-    return 'intern'
+    </div>`
 }
-
-function generateEngineerCard(){
-    return 'engineer'
+function generateEngineerCard(engineer) {
+    return `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h3 class="card-title">Engineer ${engineer.id.name}</h3>
+    <h6 class="card-subtitle mb-2 text-muted">${engineer.id.id}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${engineer.id.email}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${engineer.id.github}</h6>
+    </div>
+    </div>`
 }
-
-function generateManagerCard(){
-    return 'manager'
+function generateInternCard(intern) {
+    return `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    <h3 class="card-title">Intern ${intern.id.name}</h3>
+    <h6 class="card-subtitle mb-2 text-muted">${intern.id.id}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${intern.id.email}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${intern.id.number}</h6>
+    </div>
+    </div>`
 }
 
 createManager()

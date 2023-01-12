@@ -12,7 +12,7 @@ N/A
 
 This application allows a user to create a team of employees with given titles: manager, engineer, and intern. Each type of employee displays with information that is specific to that employee type. When a user clicks on a specific card, they will be linked to the employee's email or github account (for engineers only).
 
-[Team-Profile-Generator] (https://github.com/annaperlack/team-profile-generator)
+[Team-Profile-Generator](https://github.com/annaperlack/team-profile-generator)
 
 ## Credits
 
